@@ -1,0 +1,217 @@
+:root {
+  --bg: #241629;
+  --bg-deep: #1a0f1f;
+  --paper: #FFF8ED;
+  --ink: #2B1B22;
+  --offwhite: #F5EFE6;
+  --gold: #F4B740;
+  --coral: #FF6F59;
+  --teal: #2EC4B6;
+  --muted: #B9A8C2;
+  --line: rgba(245, 239, 230, 0.14);
+}
+
+* { box-sizing: border-box; }
+
+body {
+  margin: 0;
+  background: radial-gradient(ellipse at top, var(--bg) 0%, var(--bg-deep) 100%);
+  color: var(--offwhite);
+  font-family: 'Work Sans', sans-serif;
+  min-height: 100vh;
+  padding: 40px 20px 80px;
+}
+
+.wrap { max-width: 760px; margin: 0 auto; }
+
+/* ---------- Header ---------- */
+header { text-align: center; margin-bottom: 36px; position: relative; }
+
+.eyebrow {
+  font-family: 'Space Mono', monospace;
+  font-size: 12px;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--teal);
+  margin-bottom: 10px;
+}
+
+h1 {
+  font-family: 'Fraunces', serif;
+  font-weight: 700;
+  font-size: clamp(32px, 6vw, 48px);
+  margin: 0 0 8px;
+  letter-spacing: -0.01em;
+}
+
+.sub { color: var(--muted); font-size: 15px; max-width: 440px; margin: 0 auto; line-height: 1.5; }
+
+.signout-btn {
+  position: absolute;
+  top: 0;
+  right: 0;
+  background: none;
+  border: 1px solid var(--line);
+  color: var(--muted);
+  font-family: 'Space Mono', monospace;
+  font-size: 11px;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  padding: 8px 12px;
+  border-radius: 8px;
+  cursor: pointer;
+}
+.signout-btn:hover { color: var(--offwhite); border-color: var(--muted); }
+
+/* ---------- Garland ---------- */
+.garland-region { position: relative; margin: 36px 0 44px; min-height: 96px; }
+
+.garland-line {
+  position: absolute; top: 6px; left: 4%; right: 4%; height: 2px;
+  background: repeating-linear-gradient(90deg, var(--muted) 0 6px, transparent 6px 12px);
+  opacity: 0.5;
+}
+
+.garland { display: flex; justify-content: center; align-items: flex-start; gap: 4px; flex-wrap: wrap; }
+
+.flag {
+  position: relative; width: 58px; padding-top: 14px;
+  display: flex; flex-direction: column; align-items: center;
+  animation: sway 4.5s ease-in-out infinite; transform-origin: top center;
+}
+.flag:nth-child(odd) { animation-delay: -1.2s; }
+.flag:nth-child(3n) { animation-delay: -2.4s; }
+
+@keyframes sway { 0%, 100% { transform: rotate(-2deg); } 50% { transform: rotate(2deg); } }
+@media (prefers-reduced-motion: reduce) { .flag { animation: none; } }
+
+.flag-shape {
+  width: 44px; height: 52px;
+  clip-path: polygon(0 0, 100% 0, 50% 100%);
+  display: flex; align-items: flex-start; justify-content: center;
+  padding-top: 8px;
+  font-family: 'Space Mono', monospace; font-weight: 700; font-size: 13px; color: var(--ink);
+}
+
+.flag.soonest .flag-shape { width: 54px; height: 64px; font-size: 15px; box-shadow: 0 0 18px currentColor; }
+
+.flag-name {
+  font-size: 10px; color: var(--muted); margin-top: 6px; text-align: center;
+  max-width: 58px; overflow: hidden; text-overflow: ellipsis; white-space: nowrap;
+}
+.flag.soonest .flag-name { color: var(--offwhite); font-weight: 600; }
+
+.garland-empty { text-align: center; color: var(--muted); font-size: 13px; font-family: 'Space Mono', monospace; padding: 20px 0; }
+
+/* ---------- Ticket / form (shared by auth + add-birthday) ---------- */
+.ticket {
+  background: var(--paper); color: var(--ink); border-radius: 14px; padding: 22px;
+  display: flex; gap: 12px; flex-wrap: wrap; align-items: flex-end;
+  box-shadow: 0 18px 40px -20px rgba(0,0,0,0.6);
+  position: relative; margin-bottom: 40px;
+}
+.ticket::before, .ticket::after {
+  content: ""; position: absolute; width: 20px; height: 20px;
+  background: var(--bg-deep); border-radius: 50%; top: 50%; transform: translateY(-50%);
+}
+.ticket::before { left: -10px; }
+.ticket::after { right: -10px; }
+
+.auth-wrap { max-width: 420px; }
+.auth-form { flex-direction: column; align-items: stretch; }
+.auth-actions { display: flex; gap: 10px; width: 100%; }
+.auth-actions .add-btn { flex: 1; }
+
+.field { display: flex; flex-direction: column; gap: 6px; flex: 1; min-width: 140px; }
+.field label { font-family: 'Space Mono', monospace; font-size: 11px; letter-spacing: 0.08em; text-transform: uppercase; color: #6b5a63; }
+.field input {
+  border: none; border-bottom: 2px solid #d8cdb8; background: transparent;
+  font-family: 'Work Sans', sans-serif; font-size: 16px; padding: 6px 2px; color: var(--ink);
+  outline: none; transition: border-color 0.15s ease;
+}
+.field input:focus { border-color: var(--coral); }
+
+.add-btn {
+  background: var(--ink); color: var(--paper); border: none; border-radius: 8px;
+  padding: 12px 22px; font-family: 'Space Mono', monospace; font-size: 13px; font-weight: 700;
+  letter-spacing: 0.05em; text-transform: uppercase; cursor: pointer;
+  transition: transform 0.12s ease, background 0.12s ease;
+}
+.add-btn:hover { background: var(--coral); }
+.add-btn:active { transform: scale(0.97); }
+.add-btn.secondary { background: transparent; color: var(--ink); border: 2px solid var(--ink); }
+.add-btn.secondary:hover { background: var(--ink); color: var(--paper); }
+
+.form-msg { width: 100%; font-size: 12px; color: var(--coral); font-family: 'Space Mono', monospace; min-height: 16px; }
+
+/* ---------- List ---------- */
+.list-header { display: flex; justify-content: space-between; align-items: baseline; margin-bottom: 14px; }
+.list-header h2 { font-family: 'Fraunces', serif; font-weight: 600; font-size: 20px; margin: 0; }
+.list-count { font-family: 'Space Mono', monospace; font-size: 12px; color: var(--muted); }
+
+.cards { display: flex; flex-direction: column; gap: 10px; }
+
+.card {
+  background: var(--paper); color: var(--ink); border-radius: 12px; padding: 16px 18px;
+  display: flex; align-items: flex-start; gap: 16px;
+  box-shadow: 0 10px 24px -18px rgba(0,0,0,0.7);
+}
+
+.badge {
+  font-family: 'Space Mono', monospace; font-weight: 700; font-size: 12px; color: var(--paper);
+  background: var(--ink); border-radius: 999px; padding: 8px 10px; text-align: center;
+  min-width: 58px; letter-spacing: -0.02em; flex-shrink: 0; margin-top: 2px;
+}
+.badge.today { background: var(--coral); }
+.badge.soon { background: var(--gold); color: var(--ink); }
+
+.card-info { flex: 1; min-width: 0; }
+
+.card-name {
+  font-family: 'Fraunces', serif; font-weight: 600; font-size: 17px; margin: 0 0 2px;
+  overflow: hidden; text-overflow: ellipsis; white-space: nowrap;
+}
+.card-date { font-size: 13px; color: #7a6a72; margin: 0 0 4px; }
+
+.countdown {
+  font-family: 'Space Mono', monospace; font-size: 12px; color: var(--teal);
+  background: rgba(46, 196, 182, 0.1); display: inline-block; padding: 3px 8px;
+  border-radius: 6px; margin-bottom: 10px;
+}
+.countdown.today { color: var(--coral); background: rgba(255,111,89,0.12); }
+
+.notes-input {
+  width: 100%; min-height: 44px; resize: vertical;
+  border: 1px solid #e7dcc8; border-radius: 8px; padding: 8px 10px;
+  font-family: 'Work Sans', sans-serif; font-size: 13px; color: var(--ink);
+  background: #fffdf8; outline: none; transition: border-color 0.15s ease;
+}
+.notes-input:focus { border-color: var(--teal); }
+.notes-input::placeholder { color: #b3a396; }
+
+.notes-label {
+  font-family: 'Space Mono', monospace; font-size: 10px; letter-spacing: 0.06em;
+  text-transform: uppercase; color: #9c8b93; display: block; margin-bottom: 4px;
+}
+
+.del-btn {
+  background: none; border: none; color: #b3a396; font-size: 18px; cursor: pointer;
+  padding: 4px 8px; line-height: 1; border-radius: 6px; margin-top: 2px;
+  transition: color 0.12s ease, background 0.12s ease;
+}
+.del-btn:hover { color: var(--coral); background: rgba(255,111,89,0.1); }
+
+.empty-state {
+  text-align: center; padding: 50px 20px; color: var(--muted);
+  border: 1px dashed var(--line); border-radius: 14px;
+}
+.empty-state .big { font-family: 'Fraunces', serif; font-size: 20px; color: var(--offwhite); margin-bottom: 6px; }
+
+.loading { text-align: center; color: var(--muted); font-family: 'Space Mono', monospace; font-size: 13px; padding: 30px 0; }
+
+:focus-visible { outline: 2px solid var(--teal); outline-offset: 2px; }
+
+.date-group { display: flex; align-items: center; gap: 4px; }
+.date-group input { width: 54px; text-align: center; }
+.date-group input#yearInput { width: 74px; }
+.date-sep { color: #b3a396; font-family: 'Space Mono', monospace; }

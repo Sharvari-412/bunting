@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Bunting — Birthday Reminders</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,600;9..144,700&family=Work+Sans:wght@400;500;600&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<!-- ============ AUTH SCREEN ============ -->
+<div class="wrap auth-wrap" id="authView">
+  <header>
+    <div class="eyebrow">Bunting</div>
+    <h1>Who's up next?</h1>
+    <p class="sub">Sign in to see your garland.</p>
+  </header>
+
+  <form class="ticket auth-form" id="authForm">
+    <div class="field">
+      <label for="emailInput">Email</label>
+      <input type="email" id="emailInput" required autocomplete="email">
+    </div>
+    <div class="field">
+      <label for="passwordInput">Password</label>
+      <input type="password" id="passwordInput" required autocomplete="current-password" minlength="6">
+    </div>
+    <div class="auth-actions">
+      <button type="submit" class="add-btn" id="signInBtn">Sign in</button>
+      <button type="button" class="add-btn secondary" id="signUpBtn">Create account</button>
+    </div>
+    <div class="form-msg" id="authMsg"></div>
+  </form>
+</div>
+
+<!-- ============ MAIN APP ============ -->
+<div class="wrap" id="appView" style="display:none">
+  <header>
+    <div class="eyebrow">Bunting</div>
+    <h1>Who's up next?</h1>
+    <p class="sub">Add a birthday, jot a gift idea, and watch the garland reorder around whoever's cake comes soonest.</p>
+    <button class="signout-btn" id="signOutBtn">Sign out</button>
+  </header>
+
+  <div class="garland-region">
+    <div class="garland-line"></div>
+    <div id="garland" class="garland"></div>
+  </div>
+
+  <form class="ticket" id="birthdayForm">
+    <div class="field">
+      <label for="nameInput">Name</label>
+      <input type="text" id="nameInput" placeholder="" autocomplete="off" required>
+    </div>
+    <div class="field">
+      <label for="dayInput">Birth date</label>
+      <div class="date-group">
+        <input type="number" id="dayInput" placeholder="DD" min="1" max="31" required>
+        <span class="date-sep">/</span>
+        <input type="number" id="monthInput" placeholder="MM" min="1" max="12" required>
+        <span class="date-sep">/</span>
+        <input type="number" id="yearInput" placeholder="YYYY" min="1900" max="2100" required>
+      </div>
+    </div>
+    <button type="submit" class="add-btn">Add birthday</button>
+    <div class="form-msg" id="formMsg"></div>
+  </form>
+
+  <div class="list-header">
+    <h2>Upcoming birthdays</h2>
+    <span class="list-count" id="listCount"></span>
+  </div>
+
+  <div id="listRegion">
+    <div class="loading">Loading your birthdays…</div>
+  </div>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/dist/umd/supabase.js"></script>
+<script src="supabase-client.js"></script>
+<script src="app.js"></script>
+</body>
+</html>
