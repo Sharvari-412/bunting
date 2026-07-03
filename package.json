@@ -1,0 +1,27 @@
+{
+  "name": "bunting",
+  "version": "1.0.0",
+  "description": "A small web app that tracks upcoming birthdays, sorted soonest-first, with a live countdown and a notes field for gift ideas. Built with vanilla JS and Supabase (Postgres + auth), designed to also ship as an iOS/Android app via Capacitor.",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Sharvari-412/bunting.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "bugs": {
+    "url": "https://github.com/Sharvari-412/bunting/issues"
+  },
+  "homepage": "https://github.com/Sharvari-412/bunting#readme",
+  "dependencies": {
+    "@capacitor/android": "^8.4.1",
+    "@capacitor/cli": "^8.4.1",
+    "@capacitor/core": "^8.4.1",
+    "@capacitor/ios": "^8.4.1"
+  }
+}
